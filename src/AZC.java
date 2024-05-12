@@ -38,11 +38,11 @@ public class AZC {
     }
 
     public boolean heeftRuimte() {
-        return vluchtelingen.size() < 100; // Stel een maximale capaciteit per AZC.
+        return vluchtelingen.size() < 100;
     }
 
     public int beschikbarePlaatsen() {
-        return 100 - vluchtelingen.size(); // Neemt aan dat de capaciteit 100 is.
+        return 100 - vluchtelingen.size();
     }
 
     public void voegVluchtelingToe(Vluchteling vluchteling) {

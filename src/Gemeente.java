@@ -1,7 +1,7 @@
 public class Gemeente {
     private String naam;
     private int aantalInwoners;
-    private int aantalVluchtelingen;  // Correcte variabele voor het aantal vluchtelingen
+    private int aantalVluchtelingen;
 
     public Gemeente(String naam, int aantalInwoners, int aantalVluchtelingen) {
         this.naam = naam;
@@ -18,7 +18,7 @@ public class Gemeente {
     }
 
     public int getAantalVluchtelingen() {
-        return aantalVluchtelingen;  // Correcte getter voor het aantal vluchtelingen
+        return aantalVluchtelingen;
     }
 
     public void setNaam(String naam) {

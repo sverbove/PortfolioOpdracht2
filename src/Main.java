@@ -124,6 +124,12 @@ public class Main {
         }
     }
 
+    private static void manageAZC(Scanner scanner) {
+    }
+
+    private static void manageGemeente(Scanner scanner) {
+    }
+
     private static void addCountry(Scanner scanner) {
         System.out.println("Geef de naam van het land:");
         String naam = scanner.nextLine();
@@ -138,14 +144,6 @@ public class Main {
         System.out.println("Is het land nu veilig? (ja/nee):");
         boolean nieuweVeiligheid = scanner.nextLine().trim().equalsIgnoreCase("ja");
         beheerder.wijzigVeiligheidLand(naam, nieuweVeiligheid);
-    }
-
-    private static void manageGemeente(Scanner scanner) {
-        // Implementatie nodig
-    }
-
-    private static void manageAZC(Scanner scanner) {
-        // Implementatie nodig
     }
 
     private static void coaMedewerkerInterface(Scanner scanner) {
