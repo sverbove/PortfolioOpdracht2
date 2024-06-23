@@ -9,7 +9,7 @@ public class Utility {
             try {
                 return Integer.parseInt(scanner.nextLine().trim());
             } catch (NumberFormatException e) {
-                System.out.println("Ongeldige invoer. Voer alstublieft een geldig nummer in.");
+                System.out.println("Ongeldige invoer. Voer alstublieft een geldig nummer in. ");
             }
         }
     }
