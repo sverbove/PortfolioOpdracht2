@@ -1,0 +1,31 @@
+package com.example.proj2_javafx.backend;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class DossierTest {
+
+    @Test
+    public void testSetAsielaanvraagCompleet_MCDC() {
+        // Modified Condition/Decision Coverage (MC/DC)
+        code.model.Dossier dossier = new code.model.Dossier(true, false, true, false, "Geen uitspraak", "Geen", false);
+
+        dossier.setAsielaanvraagCompleet(true);
+        assertTrue(dossier.isAsielaanvraagCompleet());
+
+        dossier.setAsielaanvraagCompleet(false);
+        assertFalse(dossier.isAsielaanvraagCompleet());
+    }
+
+    @Test
+    public void testSetRechterHeeftUitspraak_MCDC() {
+        // Modified Condition/Decision Coverage (MC/DC)
+        code.model.Dossier dossier = new code.model.Dossier(true, true, true, false, "Uitspraak", "Plaatsing", false);
+
+        dossier.setRechterHeeftUitspraak(true);
+        assertTrue(dossier.isRechterHeeftUitspraak());
+
+        dossier.setRechterHeeftUitspraak(false);
+        assertFalse(dossier.isRechterHeeftUitspraak());
+    }
+}

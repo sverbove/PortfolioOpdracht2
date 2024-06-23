@@ -1,0 +1,39 @@
+package com.example.proj2_javafx.backend;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class VluchtelingTest {
+
+    class VluchtelingConcrete extends code.model.Vluchteling {
+        public VluchtelingConcrete(String naam, String landVanHerkomst, boolean paspoortGetoond) {
+            super(naam, landVanHerkomst, paspoortGetoond);
+        }
+    }
+
+    @Test
+    public void testRegistreerAdres_EquivalenceClass() {
+        // Equivalentieklassen
+        code.model.Vluchteling vluchteling = new VluchtelingConcrete("Naam", "code.model.Land", true);
+
+        vluchteling.registreerAdres("Nieuw Adres");
+        assertEquals("Nieuw Adres", vluchteling.getAdres());
+
+        vluchteling.registreerAdres(""); // lege string
+        assertEquals("", vluchteling.getAdres());
+
+        vluchteling.registreerAdres(null); // null waarde
+        assertNull(vluchteling.getAdres());
+    }
+
+    @Test
+    public void testPaspoortGetoond_BoundaryValues() {
+        // Randwaarden
+        code.model.Vluchteling vluchteling = new VluchtelingConcrete("Naam", "code.model.Land", true);
+
+        assertTrue(vluchteling.getDossier().isPaspoortGetoond());
+
+        vluchteling = new VluchtelingConcrete("Naam", "code.model.Land", false);
+        assertFalse(vluchteling.getDossier().isPaspoortGetoond());
+    }
+}

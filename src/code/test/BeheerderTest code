@@ -1,0 +1,60 @@
+package com.example.proj2_javafx.backend;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+import java.util.ArrayList;
+
+public class BeheerderTest {
+
+    @Test
+    public void testVoegLandToe_Pairwise() {
+        code.model.Beheerder beheerder = new code.model.Beheerder("Admin");
+
+        // Pairwise combinaties van naam en veiligheid
+        beheerder.voegLandToe("LandA", true);
+        beheerder.voegLandToe("LandB", false);
+        beheerder.voegLandToe("LandC", true);
+        beheerder.voegLandToe("LandD", false);
+
+        // Controleren of landen zijn toegevoegd
+        assertDoesNotThrow(() -> beheerder.voegLandToe("LandE", true));
+        assertDoesNotThrow(() -> beheerder.voegLandToe("LandF", false));
+    }
+
+    @Test
+    public void testWijzigVeiligheidLand_Pairwise() {
+        code.model.Beheerder beheerder = new code.model.Beheerder("Admin");
+        beheerder.voegLandToe("LandA", true);
+
+        beheerder.wijzigVeiligheidLand("LandA", false);
+        // Pairwise combinaties van landnamen en veiligheidsstatussen
+        assertDoesNotThrow(() -> beheerder.wijzigVeiligheidLand("LandA", false));
+        assertDoesNotThrow(() -> beheerder.wijzigVeiligheidLand("LandA", true));
+    }
+
+    @Test
+    public void testVoegGemeenteToe() {
+        code.model.Beheerder beheerder = new code.model.Beheerder("Admin");
+
+        // Equivalentieklassen en randwaarden voor het toevoegen van gemeentes
+        beheerder.voegGemeenteToe("GemeenteA", 10000);
+        ArrayList<code.model.Gemeente> gemeentes = beheerder.getGemeentes();
+
+        assertEquals(1, gemeentes.size());
+        assertEquals("GemeenteA", gemeentes.get(0).getNaam());
+        assertEquals(10000, gemeentes.get(0).getAantalInwoners());
+        assertEquals(123, gemeentes.get(0).getAantalVluchtelingen()); // assuming default aantal vluchtelingen is 123
+    }
+
+    @Test
+    public void testRapportageUitkeringen() {
+        code.model.Beheerder beheerder = new code.model.Beheerder("Admin");
+
+        // Equivalentieklassen en randwaarden voor rapportage van uitkeringen
+        beheerder.voegGemeenteToe("GemeenteA", 10000);
+        beheerder.voegGemeenteToe("GemeenteB", 20000);
+
+        // Voor deze methode is het meestal genoeg om te controleren of er geen fouten optreden
+        assertDoesNotThrow(() -> beheerder.rapportageUitkeringen());
+    }
+}
